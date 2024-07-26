@@ -1,0 +1,52 @@
+{
+  "name": "ob-plugin-cli",
+  "private": true,
+  "version": "0.0.1",
+  "description": "ob-plugin-cli is a command line tool that can help you quickly initialize a Obsidian Plugin development environment.",
+  "keywords": [
+    "ob-plugin-cli",
+    "obsidian"
+  ],
+  "bin": {
+    "ob-plugin-cli": "dist/index.mjs"
+  },
+  "main": "dist/index.mjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imfenghuang/obsidian-plugin-cli.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/esbuild.config.mjs",
+    "build": "tsc -noEmit -skipLibCheck && node scripts/esbuild.config.mjs production",
+    "publish": "node scripts/publish.js",
+    "prettier": "prettier . --write",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^5.2.1",
+    "commander": "^12.1.0",
+    "execa": "^9.3.0",
+    "ora": "^8.0.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.7.0",
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^20.14.11",
+    "builtin-modules": "^4.0.0",
+    "esbuild": "^0.23.0",
+    "esbuild-node-externals": "^1.14.0",
+    "eslint": "^9.7.0",
+    "husky": "^9.1.1",
+    "lint-staged": "^15.2.7",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4"
+  },
+  "lint-staged": {
+    "**/*.{mjs,js,ts}": [
+      "prettier --write --cache",
+      "eslint --fix --cache"
+    ]
+  }
+}
